@@ -1,0 +1,47 @@
+<html>
+  <head>
+    99Cats
+  </head>
+
+  
+  <body>
+    <% url = (cat.persisted? ? cat_url(cat) : cats_url) %>
+    <form action="<%=url%>" method="post">
+      <% if cat.persisted? %>
+        <input type="hidden" name="_method" value="patch">
+      <% end %>
+      
+      Name: <input type="text" name="cat[name]" value="<%=cat.name%>"> <br>
+      Age: <input type="text" name="cat[age]" value="<%=cat.age%>"> <br>
+      Birth Date: <input 
+                    type="date" 
+                    name="cat[birth_date]" 
+                    value="<%=cat.birth_date%>"
+                  > <br>
+      
+      <label for="cat_female" >Female</label> 
+      <input type="radio" name="cat[sex]" id="cat_female" value="F"> <br>
+      
+      <label for="cat_male">Male</label> 
+      <input type="radio" name="cat[sex]" id="cat_male" value="M"> <br>
+      
+      <label for="cat_color">Cat color</label>
+      <select name="cat[color]" id="cat_color">
+        <option>Choose your color</option>
+        <% Cat::COLORS.each do |color| %>
+          <option value="<%=color%>"><%=color.capitalize%></option>
+        <%end%> 
+        
+        <% if cat.persisted? %>
+          <option selected="<%=cat.color%>"><%=cat.color%></option>
+        <% end %>
+      </select>
+      
+      <br>
+      
+      <input type="submit" value="Submit"> 
+    </form>
+  </body>
+
+
+</html>

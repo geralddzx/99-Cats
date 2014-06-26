@@ -1,0 +1,32 @@
+<html>
+  <head>
+    99cats
+  </head>
+  
+  
+  <% cat = @cat %>
+  
+  
+  <body>
+    <h1>Cat <%=@cat.id%></h1>
+    <table>
+      <tr>
+        <th>Age</th>
+        <th>Birth Date</th>
+        <th>Color</th>
+        <th>Name</th>
+        <th>Sex</th>
+      </tr>
+
+      <tr>
+        <td><%= cat.age %></td>
+        <td><%= cat.birth_date %></td>
+        <td><%= cat.color %></td>
+        <td><%= cat.name %></td>
+        <td><%= cat.sex %></td>
+      </tr>
+    </table>
+    <br>
+    <%= link_to "Edit cat", edit_cat_url %>
+  </body>
+</html>

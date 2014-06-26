@@ -1,0 +1,35 @@
+<html>
+  <head>
+    99Cats
+  </head>
+
+  
+  <body>
+    Rent Cats
+    <form action="<%=url%>" method="post">
+      
+      Start Date: <input 
+                    type="date" 
+                    name="cat[birth_date]" 
+                    value="<%=cat.birth_date%>"
+                  > <br>
+                  
+      <select name="cat[color]" id="cat_color">
+        <option>Choose your color</option>
+        <% Cat::COLORS.each do |color| %>
+          <option value="<%=color%>"><%=color.capitalize%></option>
+        <%end%> 
+        
+        <% if cat.persisted? %>
+          <option selected="<%=cat.color%>"><%=cat.color%></option>
+        <% end %>
+      </select>
+      
+      <br>
+      
+      <input type="submit" value="Submit"> 
+    </form>
+  </body>
+
+
+</html>
